@@ -1,9 +1,9 @@
-let Web3 = require('web3');
+// let contract = require("truffle-contract");
 
 App = {
     web3Provider: null,
     web3: null,
-    contracts: {},
+    contract: null,
     initWeb3: async function() {
         // Modern dapp browsers...
         console.log(window.ethereum);
@@ -32,19 +32,25 @@ App = {
     },
 
     initContract: function() {
-        console.log("here");
-        $.getJSON('../build/CertificateFactory.json', function(data) {
-
+        $.getJSON('../build/contracts/CertificateFactory.json', function(data) {
+            this.web3Provider = new Web3.providers.HttpProvider("http://localhost:8545"); // ???
             console.log(data);
             // Get the necessary contract artifact file and instantiate it with truffle-contract
-            let CertificateArtifact = data;
-            this.contracts.CertificateFactory = TruffleContract(CertificateArtifact);
+            // let CertificateArtifact = data;
+            // this.contracts.CertificateFactory = TruffleContract(CertificateArtifact);
 
             // Set the provider for our contract
-            this.contracts.CertificateFactory.setProvider(this.web3Provider);
+            console.log(this.web3Provider);
+            this.contract = TruffleContract(data).setProvider(this.web3Provider);
+            // this.contract.setProvider(this.web3Provider);
+            let Factory;
+            this.contract.deployed().then(function(instance) {
+                Factory = instance;
+                console.log(Factory);
+            });
         });
         
-        return this.bindEvents();
+        return this.getInstance();
     },
 
     bindEvents: function() {

@@ -1,0 +1,25 @@
+{
+  "name": "blockchain-certificate",
+  "version": "1.0.0",
+  "description": "A web application for issuing and validating Blockchain Certificates",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blockchain-certificate-ucu/blockchain-certificate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blockchain-certificate-ucu/blockchain-certificate/issues"
+  },
+  "homepage": "https://github.com/blockchain-certificate-ucu/blockchain-certificate#readme",
+  "dependencies": {
+    "truffle-contract": "^4.0.0"
+  }
+}
